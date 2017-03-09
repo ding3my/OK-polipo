@@ -29,4 +29,16 @@ fi
 
 
 ```
+# Bug known
+running `http_proxy=http://localhost:8123 curl ip.gs` and returning false on virtualbox:
 
+```
+host:
+4.5.5-300.fc24.x86_64
+
+virtualbox --help
+Oracle VM VirtualBox Manager 5.1.14
+
+slave:
+4.5.5-300.fc24.x86_64
+```
