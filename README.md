@@ -14,22 +14,22 @@ if [ -z "`grep '^#OK-polipo$' /etc/polipo/config`" ]; then
 line_num="`sudo grep -n '# Uncomment this if you want to use a parent SOCKS proxy:' /etc/polipo/config | cut -d: -f1`"
 echo $line_num
 
-cat << end > $HOME/.OK-polipo
+cat << end > $HOME/.OK-polipo.temp
 #OK-polipo
 socksParentProxy = "localhost:1080"
 socksProxyType = socks5
 #OK-polipo
 end
 
-sudo sed -E "$line_num r $HOME/.OK-polipo" /etc/polipo/config -i
+sudo sed -E "$line_num r $HOME/.OK-polipo.temp" /etc/polipo/config -i
 
-rm $HOME/.OK-polipo
+rm $HOME/.OK-polipo.temp
 
 fi
 
 
 ```
-# Bug known
+# Bugs known
 running `http_proxy=http://localhost:8123 curl ip.gs` and returning false on virtualbox:
 
 ```
